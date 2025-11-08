@@ -19,7 +19,6 @@ def parse_args():
     parser = argparse.ArgumentParser("train")
     
     # -------- WRITE YOUR CODE HERE --------
-    
     # Step 1: Define arguments for train data, test data, model output, and RandomForest hyperparameters. Specify their types and defaults.  
     parser.add_argument("--train_data", type=str, help="Path to train dataset folder")
     parser.add_argument("--test_data", type=str, help="Path to test dataset folder")
@@ -28,7 +27,6 @@ def parse_args():
     parser.add_argument("--max_depth", type=int, default=10, help="Maximum depth of trees")
 
     args = parser.parse_args()
-
     return args
 
 def select_first_file(path: str) -> str:
@@ -43,7 +41,6 @@ def main(args):
     '''Read train and test datasets, train model, evaluate model, save trained model'''
 
     # -------- WRITE YOUR CODE HERE --------
-
     # Step 2: Read the train and test datasets from the provided paths using pandas. Replace '_______' with appropriate file paths and methods.  
     train_df = pd.read_csv(select_first_file(args.train_data))
     test_df = pd.read_csv(select_first_file(args.test_data))
@@ -65,7 +62,7 @@ def main(args):
     mse = mean_squared_error(y_test, predictions)
     print(f"MSE on test set: {mse:.4f}")
     # Step 7: Log the MSE metric in MLflow for model evaluation, and save the trained model to the specified output path.  
-    .log_metric("MSE", mse)
+    mlflow.log_metric("MSE", mse)
     os.makedirs(args.model_output, exist_ok=True)
     mlflow.sklearn.save_model(sk_model=model, path=args.model_output)
     print(f"Model saved at {args.model_output}")
@@ -91,4 +88,3 @@ if __name__ == "__main__":
     main(args)
 
     mlflow.end_run()
-
