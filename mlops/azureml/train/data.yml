@@ -1,0 +1,12 @@
+$schema: https://azuremlschemas.azureedge.net/latest/data.schema.json
+
+type: uri_file
+# Provide the name for the dataset, related to used cars
+name: used-cars-data
+# Provide the description for the dataset, related to used cars
+description: >
+  Historical used-car sales dataset for CarOnSell (Las Vegas dealership).
+  Contains attributes used to drive a data-driven pricing model (Segment, Kilometers_Driven,
+  Mileage, Engine, Power, Seats, Price). Intended for training and evaluating models that
+  automate recommended vehicle pricing to improve pricing consistency, speed, and profitability.
+path: ../../../data/used_cars.csv

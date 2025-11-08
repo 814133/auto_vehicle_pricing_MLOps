@@ -1,0 +1,11 @@
+$schema: https://azuremlschemas.azureedge.net/latest/environment.schema.json
+
+# Provide the name for the environment
+name: used-cars-train-env
+image: mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04
+conda_file: ../../../data-science/environment/train-conda.yml
+# Provide the name for the environment
+description: >
+  Training environment for the used car pricing model. Includes all dependencies for data preprocessing,
+  feature engineering, model training, evaluation, and registration as part of the MLOps pipeline designed
+  for the Las Vegas automobile dealership to enable automated, data-driven pricing decisions.
